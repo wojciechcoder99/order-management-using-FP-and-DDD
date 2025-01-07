@@ -11,6 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class OrderTest {
 
+    /**
+     * User Story 1: As a user, I want to create an empty order so that I can start adding items.
+     */
+    @Test
+    public void shouldCreateAnEmptyOrder() {
+        Order order = new Order();
+
+        assertNotNull(order);
+        assertEquals(0, order.getOrderItems().size());
+        assertEquals(0, order.getTotalPrice().compareTo(BigDecimal.ZERO));
+    }
+
+    /**
+     * User Story 2: As a user, I want to add items to an order so that I can build my order.
+     */
     @Test
     public void shouldAddTwoItemsToOrder() {
         // given
