@@ -60,5 +60,4 @@ class OrderTest {
         assertEquals(2, orderV2.getOrderItems().size());
         assertEquals(0, orderV2.getTotalPrice().compareTo(new BigDecimal("2228.15")));
     }
-
 }

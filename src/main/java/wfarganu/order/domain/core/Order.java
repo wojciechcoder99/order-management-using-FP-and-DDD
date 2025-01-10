@@ -4,11 +4,13 @@ import io.vavr.Function1;
 import io.vavr.Function2;
 import io.vavr.collection.List;
 import lombok.Getter;
+import wfarganu.ddd.BaseAggregate;
 import wfarganu.order.domain.dtos.OrderItemDTO;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@BaseAggregate
 final class Order {
     private final UUID orderId;
     @Getter
