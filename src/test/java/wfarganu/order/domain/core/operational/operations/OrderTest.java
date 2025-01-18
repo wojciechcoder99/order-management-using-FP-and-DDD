@@ -1,4 +1,4 @@
-package wfarganu.order.domain.core;
+package wfarganu.order.domain.core.operational.operations;
 
 import org.junit.jupiter.api.Test;
 import wfarganu.order.domain.dtos.OrderItemDTO;
@@ -60,4 +60,20 @@ class OrderTest {
         assertEquals(2, orderV2.getOrderItems().size());
         assertEquals(0, orderV2.getTotalPrice().compareTo(new BigDecimal("2228.15")));
     }
+
+    /**
+     * User story 3: As a user, I want to place an order so that I can purchase items from the catalog
+     */
+    @Test
+    public void shouldPlaceOrder() {
+        // given
+       Order orderV0 = new Order();
+
+       // when
+        Order order = orderV0.placeOrder();
+
+        // then
+        assertNotNull(order);
+    }
 }
+

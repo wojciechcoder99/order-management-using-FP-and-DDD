@@ -3,7 +3,7 @@ package wfarganu.order.application;
 
 import io.vavr.collection.List;
 import org.junit.jupiter.api.Test;
-import wfarganu.order.domain.core.Invoice;
+import wfarganu.order.domain.core.operational.operations.Invoice;
 import wfarganu.order.domain.dtos.OrderDTO;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package wfarganu.order.domain.core;
+package wfarganu.order.domain.core.operational.capability;
 
 import java.math.BigDecimal;
 

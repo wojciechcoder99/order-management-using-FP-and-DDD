@@ -1,4 +1,4 @@
-package wfarganu.order.domain.core;
+package wfarganu.order.domain.core.operational.operations;
 
 import io.vavr.Function1;
 import io.vavr.Function2;
@@ -10,6 +10,13 @@ import wfarganu.order.domain.dtos.OrderItemDTO;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+/**
+ * Domain Driven Design enforces to correctly set aggregate boundaries, otherwise they could be as 'God classes',
+ * impossible to be easily changed. The technique used to do that is 'invariants modelling'. We need to distinguish
+ * crucial operations which are stable e.g. adding a new item to the order causes the price recalculation.
+ * <p>
+ * Therefore, we will use User Stories to group terms in the context of consistent unit change.
+ */
 @BaseAggregate
 final class Order {
     private final UUID orderId;
@@ -54,5 +61,9 @@ final class Order {
 
     private Function2<BigDecimal, List<OrderItemDTO>, Order> createOrder() {
         return (totalPrice, items) -> new Order(orderId, totalPrice, items);
+    }
+
+    public Order placeOrder() {
+        return new Order(orderId, null, null);
     }
 }
