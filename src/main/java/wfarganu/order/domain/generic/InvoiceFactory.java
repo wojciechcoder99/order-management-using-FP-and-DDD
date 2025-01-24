@@ -1,6 +1,4 @@
-package wfarganu.order.domain.factory;
-
-import wfarganu.order.domain.core.operational.operations.Invoice;
+package wfarganu.order.domain.generic;
 
 public final class InvoiceFactory {
     public static Invoice createEmptyInvoice() {

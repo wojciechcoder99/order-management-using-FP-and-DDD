@@ -3,8 +3,8 @@ package wfarganu.order.application;
 
 import io.vavr.collection.List;
 import org.junit.jupiter.api.Test;
-import wfarganu.order.domain.core.operational.operations.Invoice;
-import wfarganu.order.domain.dtos.OrderDTO;
+import wfarganu.order.domain.generic.Invoice;
+import wfarganu.order.domain.core.dtos.OrderDTO;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -23,7 +23,7 @@ class OrderApplicationServiceTest {
     private final OrderApplicationService orderApplicationService = new OrderApplicationService();
 
     /**
-     * User story 3: As a user, I want to submit an order and get the invoice as the confirmation of success
+     * User story 1: As a user, I want to submit an order and get the invoice as the confirmation of success
      */
     @Test
     public void shouldSubmitOrder() {

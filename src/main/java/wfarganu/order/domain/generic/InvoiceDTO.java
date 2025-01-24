@@ -1,4 +1,6 @@
-package wfarganu.order.domain.dtos;
+package wfarganu.order.domain.generic;
+
+import wfarganu.order.domain.core.dtos.OrderDTO;
 
 import java.time.Instant;
 import java.util.UUID;

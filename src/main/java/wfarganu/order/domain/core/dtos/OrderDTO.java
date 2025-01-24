@@ -1,4 +1,4 @@
-package wfarganu.order.domain.dtos;
+package wfarganu.order.domain.core.dtos;
 
 import io.vavr.collection.List;
 import lombok.Builder;

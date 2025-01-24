@@ -1,9 +1,9 @@
 package wfarganu.order.application;
 
 import wfarganu.ddd.ApplicationService;
-import wfarganu.order.domain.core.operational.operations.Invoice;
-import wfarganu.order.domain.dtos.OrderDTO;
-import wfarganu.order.domain.factory.InvoiceFactory;
+import wfarganu.order.domain.generic.Invoice;
+import wfarganu.order.domain.core.dtos.OrderDTO;
+import wfarganu.order.domain.generic.InvoiceFactory;
 
 
 @ApplicationService

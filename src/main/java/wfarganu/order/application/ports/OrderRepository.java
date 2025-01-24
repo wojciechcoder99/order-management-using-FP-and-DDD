@@ -1,6 +1,6 @@
 package wfarganu.order.application.ports;
 
-import wfarganu.order.domain.dtos.OrderDTO;
+import wfarganu.order.domain.core.dtos.OrderDTO;
 
 import java.util.UUID;
 

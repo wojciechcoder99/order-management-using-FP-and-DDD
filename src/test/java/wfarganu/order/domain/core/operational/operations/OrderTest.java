@@ -1,15 +1,34 @@
 package wfarganu.order.domain.core.operational.operations;
 
+import io.vavr.collection.Seq;
+import io.vavr.control.Either;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import wfarganu.order.domain.dtos.OrderItemDTO;
-import wfarganu.order.domain.dtos.ProductDTO;
+import wfarganu.order.domain.core.dtos.OrderItemDTO;
+import wfarganu.order.domain.core.dtos.ProductDTO;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
+
+    private static OrderItemDTO orderItemBag;
+
+    // TODO wfarganu: Prepare test data factories
+    @BeforeAll
+    public static void setUp() {
+        ProductDTO bag = ProductDTO.builder()
+                .name("Dior bag")
+                .price(new BigDecimal("1111"))
+                .build();
+        orderItemBag = OrderItemDTO.builder()
+                .product(bag)
+                .reserved(2)
+                .totalPrice(new BigDecimal("2222"))
+                .build();
+
+    }
 
     /**
      * User Story 1: As a user, I want to create an empty order so that I can start adding items.
@@ -41,16 +60,6 @@ class OrderTest {
                 .totalPrice(new BigDecimal("6.15"))
                 .build();
 
-        ProductDTO bag = ProductDTO.builder()
-                .name("Dior bag")
-                .price(new BigDecimal("1111"))
-                .build();
-        OrderItemDTO orderItemBag = OrderItemDTO.builder()
-                .product(bag)
-                .reserved(2)
-                .totalPrice(new BigDecimal("2222"))
-                .build();
-
         // when
         Order orderV1 = orderV0.addItem(orderItemApple);
         Order orderV2 = orderV1.addItem(orderItemBag);
@@ -67,13 +76,15 @@ class OrderTest {
     @Test
     public void shouldPlaceOrder() {
         // given
-       Order orderV0 = new Order();
+        Order orderV0 = new Order();
+        Order orderV1 = orderV0.addItem(orderItemBag);
 
-       // when
-        Order order = orderV0.placeOrder();
+        // when
+        Either<Seq<String>, Order> result = orderV1.placeOrder();
 
         // then
-        assertNotNull(order);
+        assertTrue(result.isRight());
+        assertEquals(Order.OrderStatus.COMPLETED, result.get().getStatus());
     }
 }
 
